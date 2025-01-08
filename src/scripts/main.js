@@ -10,7 +10,7 @@ const promise1 = new Promise((resolve, reject) => {
 });
 
 const promise2 = new Promise((resolve, reject) => {
-  setTimeout(() => reject, 3000);
+  setTimeout(() => reject(new Error('3s passed')), 3000);
 });
 
 promise1.then(
@@ -19,12 +19,14 @@ promise1.then(
 
     div.classList.add('message');
     div.innerText = 'Promise was resolved!';
+    document.body.appendChild(div);
   },
   () => {
     const div = document.createElement('div');
 
     div.classList.add('message', 'error-message');
     div.innerText = 'Promise was rejected!';
+    document.body.appendChild(div);
   },
 );
 
@@ -34,11 +36,13 @@ promise2.then(
 
     div.classList.add('message');
     div.innerText = 'Promise was resolved!';
+    document.body.appendChild(div);
   },
   () => {
     const div = document.createElement('div');
 
     div.classList.add('message', 'error-message');
     div.innerText = 'Promise was rejected!';
+    document.body.appendChild(div);
   },
 );
